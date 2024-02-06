@@ -1,7 +1,9 @@
 [
   {
-    "comment": "I like to blog!",
-    "guest_name": "Ivan"
+    "title": "Tech",
+    "content": "I think computers are great!",
+    "user_id": 1,
+    "created_date": "2024-02-05"
   }
 ]
 
