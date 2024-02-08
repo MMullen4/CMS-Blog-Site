@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-  // Get Blog by Primary key and include  camment & username
+  // Get Blog by Primary key and include comment & username
 router.get('/blog/:id', withAuth, async (req, res) => {
   
     try {
@@ -94,15 +94,26 @@ router.get('/editblog/:id', async (req, res) => {
 // dashboard page route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Blog }],
+    const blogData = await Blog.findAll({
+      where: {
+        user_id: req.session.user_id,
+      }
+      // // include: [
+      //   {
+      //     model: User,
+      //     attributes: ['username'],
+      //   },
+      // const userData = await User.findByPk(req.session.user_id, {
+      //   attributes: { exclude: ['password'] },
+      //   include: [{ model: Blog }],
     });
 
-    const user = userData.get({ plain: true });
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+    // const user = blogData.get({ plain: true });
 
     res.render('dashboard', {
-      ...user,
+      blogs,
       loggedIn: true
     });
   } catch (err) {
