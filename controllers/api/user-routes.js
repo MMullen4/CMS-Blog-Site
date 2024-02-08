@@ -13,7 +13,6 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user_id = dbUserData.id; // saving the user's id # to the cookie session
-      
       res.status(200).json(dbUserData);
     });
   } catch (err) {

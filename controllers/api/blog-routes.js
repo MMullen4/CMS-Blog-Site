@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
-const { Blog } = require('../../models');
+const { Blog } = require('../../models'); // pulls out of api and controllers and connects to models folder
 
 // create a blog
 router.post('/', async (req, res) => {
     Blog.create({
-        ...req.body,
-        user_id: req.session.user_id,  // accessing saved cookie
+        ...req.body,  // spreads out key value pairs
+        user_id: req.session.user_id,  // accessing saved cookie session
     })
         .then((newBlog) => {
             // send back the new blog as a JSON object
@@ -26,7 +26,7 @@ router.delete('/:id', async (req, res) => {
         });
         res.json(deletedBlog);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json(error);  // sends any errors to front end
     }
 });
 

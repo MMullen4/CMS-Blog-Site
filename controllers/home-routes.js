@@ -1,10 +1,12 @@
+// home-routes that will deliver each of the pages
+
 const router = require('express').Router();
 const { User , Blog, Comment } = require('../models');
 // Import custom middleware 
 
 const withAuth = require('../utils/auth');
 
-// GET all blogs
+// GET All blogs from the database
 router.get('/', async (req, res) => {
   try {
     const blogData = await Blog.findAll({
@@ -16,8 +18,10 @@ router.get('/', async (req, res) => {
       ],
     });
 
+    // Serialize data so the frontend template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
+    // Pass serialized data and session flag into handlebars template
     res.render('homepage', {
       blogs,
       loggedIn: req.session.loggedIn,
@@ -27,7 +31,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+  // Get Blog by Primary key and include  camment & username
 router.get('/blog/:id', withAuth, async (req, res) => {
   
     try {
@@ -52,10 +56,10 @@ router.get('/blog/:id', withAuth, async (req, res) => {
           }
         ],
       });
+      // Serialize data so the frontend handlebars template can read it
       const blog = blogdata.get({ plain: true });
       res.render('blog', { blog, loggedIn: req.session.loggedIn });
 
-      
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -65,7 +69,6 @@ router.get('/blog/:id', withAuth, async (req, res) => {
 
 // edit blog page
 router.get('/editblog/:id', async (req, res) => {
- 
   try {
     const blogdata = await Blog.findByPk(req.params.id, {
       include: [
@@ -87,6 +90,7 @@ router.get('/editblog/:id', async (req, res) => {
   }
   }
 );
+
 // dashboard page route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {

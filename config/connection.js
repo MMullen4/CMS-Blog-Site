@@ -2,7 +2,10 @@ const Sequelize = require('sequelize');
 require('dotenv').config();
 
 let sequelize;
-// Checks to see if the application is deployed. If JAWSDB_URL environment variable exists, then that is used. If not, it determines that you're on your local machine and utilizes the environment variables from the .env file to set up Sequelize. 
+// Checks to see if the application is deployed. If JAWSDB_URL environment variable exists, 
+// then that is used. If not, it determines that you're on your local machine and utilizes 
+// the environment variables from the.env file to set up Sequelize. 
+// JAWSDB is the hosted db used when deployed to Heroku
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {

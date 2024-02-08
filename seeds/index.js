@@ -1,5 +1,4 @@
 const sequelize = require('../config/connection');
-
 const seedBlog = require('./blogData');
 
 const seedAll = async () => {
