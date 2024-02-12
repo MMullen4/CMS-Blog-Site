@@ -1,4 +1,4 @@
-// home-routes that will deliver each of the pages
+// home-routes will deliver each of the pages (via each's handlebars)
 
 const router = require('express').Router();
 const { User , Blog, Comment } = require('../models');
@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the frontend template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
+    console.log(blogs);
 
     // Pass serialized data and session flag into handlebars template
     res.render('homepage', {
@@ -58,6 +59,8 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       });
       // Serialize data so the frontend handlebars template can read it
       const blog = blogdata.get({ plain: true });
+      console.log(blog);
+      
       res.render('blog', { blog, loggedIn: req.session.loggedIn });
 
     } catch (err) {
@@ -82,8 +85,6 @@ router.get('/editblog/:id', async (req, res) => {
     });
     const blog = blogdata.get({ plain: true });
     res.render('editblog', { blog, loggedIn: req.session.loggedIn });
-
-
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

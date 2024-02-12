@@ -4,21 +4,21 @@ const Comment = require('./comment.js')
 
 // creates associations using foreign keys
 User.hasMany(Blog, {
-  foreignKey: 'user_id',  // if user is deleted, delete all associated blogs
+  foreignKey: 'user_id',  
 })
 Blog.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'  // if user is deleted, delete all associated blogs
 })
 Blog.hasMany(Comment, {
-  foreignKey: 'blog_id',  // if blog is deleted, delete all associated comments
+  foreignKey: 'blog_id',  
 })
 Comment.belongsTo(Blog, {
   foreignKey: 'blog_id',
   onDelete: 'CASCADE' // if blog is deleted, delete all associated comments
 })
 User.hasMany(Comment, {  
-  foreignKey: 'user_id', // if user is deleted, delete all associated comments 
+  foreignKey: 'user_id', 
 })
 Comment.belongsTo(User, {
   foreignKey: 'user_id',

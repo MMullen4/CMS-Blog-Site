@@ -5,7 +5,7 @@ const { Blog } = require('../../models'); // pulls out of api and controllers an
 // create a blog
 router.post('/', async (req, res) => {
     Blog.create({
-        ...req.body,  // spreads out key value pairs
+        ...req.body,  // spreads out key value pairs from frontend 
         user_id: req.session.user_id,  // accessing saved cookie session
     })
         .then((newBlog) => {
