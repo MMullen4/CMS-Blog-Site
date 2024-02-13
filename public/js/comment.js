@@ -1,4 +1,4 @@
-const addCommnents= async()=> {
+const addCommnents = async () => {
     const comment_text = document.getElementById("userinput").value;
     const blog_id = document.getElementById("commentbtn").dataset.blogid; // accesses data- id in blog handlebars
     try {
