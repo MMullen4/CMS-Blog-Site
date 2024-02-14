@@ -3,7 +3,9 @@
         {{blog.title}}
         {{blog.content}}
     </div>
-    {{#each blog.comments as |comment|}}
+    
+    {{!-- loop through array of comments --}}
+    {{#each blog.comments as |comment|}}  
     <div class="comment_text">
         <p>
             Comment:

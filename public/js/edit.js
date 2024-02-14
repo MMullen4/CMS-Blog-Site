@@ -1,7 +1,7 @@
 const editblog = async (event) => {
     event.preventDefault();
-    const title = document.querySelector('#blog-title').value.trim();
-    const content = document.querySelector('#blog-content').value.trim();
+    const title = document.getElementById('blogtitle').value.trim();
+    const content = document.getElementById('blogcontent').value.trim();
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
@@ -21,5 +21,5 @@ const editblog = async (event) => {
         alert(response.statusText);
     }
 }
-document.querySelector('#editblog').addEventListener('submit', editblog);
+document.querySelector('editblog').addEventListener('submit', editblog);
 

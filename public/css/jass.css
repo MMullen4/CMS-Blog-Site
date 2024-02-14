@@ -1249,7 +1249,7 @@ form [type='radio'] {
 }
 
 .row {
-  /* display: flex; */
+  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin-left: -15px;

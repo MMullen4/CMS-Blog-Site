@@ -60,7 +60,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
       // Serialize data so the frontend handlebars template can read it
       const blog = blogdata.get({ plain: true });
       console.log(blog);
-      
+
       res.render('blog', { blog, loggedIn: req.session.loggedIn });
 
     } catch (err) {
@@ -71,9 +71,11 @@ router.get('/blog/:id', withAuth, async (req, res) => {
 );
 
 // edit blog page
-router.get('/editblog/:id', async (req, res) => {
+router.get('/editblog', async (req, res) => {
+  console.log(req.url);
+const id = req.url.split('=')[1];
   try {
-    const blogdata = await Blog.findByPk(req.params.id, {
+    const blogdata = await Blog.findByPk(id, {
       include: [
         {
           model: User,
@@ -83,6 +85,8 @@ router.get('/editblog/:id', async (req, res) => {
         },
       ],
     });
+    console.log(blogdata);
+
     const blog = blogdata.get({ plain: true });
     res.render('editblog', { blog, loggedIn: req.session.loggedIn });
   } catch (err) {

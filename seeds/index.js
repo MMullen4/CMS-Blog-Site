@@ -9,7 +9,7 @@ const blogData = [
     "created_date": "2024-02-05"
   }
 ]
-const userData = {
+const userData = { // use keys from User.js model
   username: "Joe",
   email: "joe@yahoo.com",
   password: "abc123"
@@ -17,7 +17,7 @@ const userData = {
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
-  await User.create(userData)
+  await User.create(userData) // creates user handing userdata 
   
   // await seedBlog();
   const seedBlog = () => Blog.bulkCreate(blogData);
