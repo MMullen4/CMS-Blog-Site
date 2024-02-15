@@ -5,7 +5,7 @@ blogs, topics and comments.
 
 ## Visuals
 
-![Alt text]/Users/mattmullen/Desktop/Screenshot 2024-02-14.png
+![Alt text](/Screenshot.png)
 
 https://blog-site-mhm-cf29b78f65cf.herokuapp.com/login
 
