@@ -1,5 +1,5 @@
-# Tech Blog
-## Description
+## Tech Blog
+Description
 The application is called Tech Blog and keeps track of tech related blog posts.  User may create, edit and delete 
 blogs, topics and comments. 
 
@@ -13,8 +13,7 @@ blogs, topics and comments.
 User must install npm i inquirer@8.2.4
 
 ## Usage
-User is presented with the following options: Login with existing credentials or create new Login credentials.  Then the prompts allow adding or creating new blogs and comments.
-
+User is presented with the following options: 
 
 ## Support
 Please reach out to me with any questions - matt@mmcprintpackaging.com
