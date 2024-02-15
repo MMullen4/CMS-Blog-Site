@@ -1,10 +1,13 @@
 ## Tech Blog
 Description
-The application is called Tech Blog and keeps track of tech related blog posts. 
+The application is called Tech Blog and keeps track of tech related blog posts.  User may create, edit and delete 
+blogs, topics and comments. 
 
 ## Visuals
 
-![Alt text]
+![Alt text]/Users/mattmullen/Desktop/Screenshot 2024-02-14.png
+
+
 
 ## Installation
 User must install npm i inquirer@8.2.4
